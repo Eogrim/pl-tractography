@@ -9,6 +9,6 @@ COPY ["requirements.txt", "${APPROOT}"]
 
 WORKDIR $APPROOT
 
-RUN pip install -r requirements.txt                                     \
+RUN pip install chrisapp                                     \
 
 CMD ["tractography.py", "--help"]
