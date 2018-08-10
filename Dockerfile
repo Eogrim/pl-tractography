@@ -10,8 +10,5 @@ COPY ["requirements.txt", "${APPROOT}"]
 WORKDIR $APPROOT
 
 RUN pip install -r requirements.txt                                     \
-  && apt-get update                                                     \
-  && apt-get install dcmtk                                              \
-
 
 CMD ["tractography.py", "--help"]
