@@ -266,7 +266,7 @@ class Tractography(ChrisApp):
         Define the code to be run by this plugin app.
         """
 
-        subprocess.Popen(["bash", "pro.sh", "Argument with multiple words"])
+        #subprocess.Popen(["bash", "pro.sh", "Argument with multiple words"])
 
 
 
