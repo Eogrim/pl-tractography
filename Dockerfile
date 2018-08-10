@@ -11,11 +11,6 @@ WORKDIR $APPROOT
 
 RUN pip install -r requirements.txt                                     \
   && apt-get update                                                     \
-  && apt-get install sudo                                               \
-  && useradd -u $UID -ms /bin/bash localuser                            \
-  && addgroup localuser sudo                                            \
-  && echo "localuser:localuser" | chpasswd                              \
-  && adduser localuser sudo                                             \
   && apt-get install dcmtk                                              \
 
 
