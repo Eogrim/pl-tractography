@@ -11,7 +11,7 @@ WORKDIR $APPROOT
 
 RUN pip install -r requirements.txt                                     \
   && apt-get update                                                     \
-  && apt-get install dcmtk -Confirm:$False                                             
+  && apt-get install -y dcmtk                                             
 
 
 CMD ["tractography.py", "--help"]
