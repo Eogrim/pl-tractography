@@ -13,8 +13,7 @@ RUN pip install -r requirements.txt                                     \
   && apt-get update                                                     \
   && apt-get install -y dcmtk                                           \
   && apt-get install -y git                                             \
-  && git clone https://github.com/FNNDSC/scripts.git                    \
-  && ls                                                                         
+  && git clone https://github.com/FNNDSC/scripts.git                                                                                            
 
 
 CMD ["tractography.py", "--help"]

@@ -9,6 +9,7 @@
 #
 
 import os
+import subprocess
 
 # import the Chris app superclass
 from chrisapp.base import ChrisApp
@@ -208,7 +209,7 @@ class Tractography(ChrisApp):
         self.add_argument("-c",
                             help        = "The '-c' indicates that the actual recon should be run on a compute cluster, with scheduling files stored in <clusterDir>. The cluster file is 'schedule.log', formatted in the standard stage-stamp manner. This schedule.log file is polled by a 'filewatch' process running on seychelles, and parsed by 'pbsubdiff.sh'. @see [-C] argument",
                             dest        = 'cluster',
-                            type        = bool,
+                            type        = str,#!!!!!!!!
                             optional    = True,
                             default     = '$Gb_runCluster')
         self.add_argument("-C",
@@ -265,8 +266,47 @@ class Tractography(ChrisApp):
         """
         Define the code to be run by this plugin app.
         """
+        
+        print(options)
+        print("-m "+options.mailReportsTo)
+        subprocess.Popen(["/bin/bash", "test.sh", "-p",\
+        	"-v "+options.verbosity, \
+        	"-D "+options.dicomInputDir, \
+        	"-U "+options.unpack, \
+        	"-b "+options.bFieldVal, \
+        	"-d "+options.dicomSeriesFile, \
+        	"-B "+options.b0vols, \
+        	"-A "+options.reconAlg, \
+        	"-I "+options.imageModel, \
+        	"--m1 "+options.maskImage1, \
+        	"--m2 "+options.maskImage2, \
+        	"--m1-lower-threshold "+options.lthm1, \
+        	"--m2-lower-threshold "+options.lthm2, \
+        	"--m1-upper-threshold "+options.uthm1, \
+        	"--m2-upper-threshold "+options.uthm1, \
+        	"--angle-threshold "+options.angle, \
+        	"-g "+options.gradientTableFile, \
+        	"-G "+options.G, \
+        	"-L "+options.logDir, \
+        	"-O "+options.outputDir, \
+        	"-o "+options.osuffix, \
+        	"-R "+options.DIRsuffix, \
+        	"-S "+options.dicomSeriesList, \
+        	"-t "+options.stages, \
+        	"-f "+options.force, \
+        	"-k "+options.kill, \
+        	"-E "+options.expert, \
+        	"-c "+options.cluster, \
+        	"-C "+options.clusterDir, \
+        	"-X "+options.columnX, \
+        	"-Y "+options.columnY, \
+        	"-Z "+options.columnZ, \
+        	"-m "+options.mailReportsTo, \
+        	"-n "+options.clusterUserName, \
+        	"--migrate-analysis "+options.migrateDir, \
+        	"/home/christophe/Documents/cookiecutter/pl-tractography/tractography"])
 
-        #subprocess.Popen(["/bin/bash", "script.sh", "-v %s", "-v %s", "-v %s", "-v %s", "-v %s", PathToFile])
+        #subprocess.Popen(["/bin/bash", "tract_meta.bash", "-p","-G", "./scripts"])
 
 
 
