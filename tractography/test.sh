@@ -23,14 +23,11 @@ declare -i Gi_verbose=0
 declare -i Gb_useExpertOptions=1
 declare -i Gb_useOverrideOut=0
 declare -i Gb_forceStage=0
-
 declare -i Gb_mailAll=0
 declare -i Gb_mailStd=0
 declare -i Gb_mailErr=0
 declare -i Gb_mailLog=0
-
 declare -i Gb_runCluster=0
-
 declare -i Gb_useDICOMFile=0
 declare -i Gb_useLowerThreshold1=0
 declare -i Gb_useUpperThreshold1=0
